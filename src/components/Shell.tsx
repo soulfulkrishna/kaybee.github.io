@@ -1,3 +1,25 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-export function Shell({title,children,privateMode=false}:{title:string;children:ReactNode;privateMode?:boolean}){return <main className={privateMode?"desktop private-desktop":"desktop"}><header className="topbar"><Link href="/" className="brand">KB/91</Link><nav aria-label="Primary"><Link href="/about">About</Link><Link href="/projects">Research</Link><Link href="/experience">Work.Log</Link><Link href="/resume">Resume</Link><Link href="/contact">Contact</Link></nav><Link className={privateMode?"mode amber":"mode"} href={privateMode?"/owner":"/owner/login"}>{privateMode?"OWNER":"GUEST"}</Link></header><section className="window" aria-labelledby="window-title"><div className="titlebar"><span id="window-title">{title}</span><span className="window-controls" aria-hidden="true">□ ◇ ×</span></div><div className="window-body">{children}</div></section><footer className="statusbar"><span>KB/91 SCIENTIFIC WORKSTATION</span><span>{privateMode?"PRIVATE DISK MOUNTED":"PUBLIC DISK"}</span></footer></main>}
+
+export function Shell({title,children,privateMode=false}:{title:string;children:ReactNode;privateMode?:boolean}){
+  return <main className={privateMode?"desktop private-desktop":"desktop"}>
+    <header className="topbar">
+      <Link href="/" className="brand">KB/91</Link>
+      <nav aria-label="Primary">
+        <Link href="/about">About</Link>
+        <Link href="/publications">Papers</Link>
+        <Link href="/projects">Projects</Link>
+        <Link href="/software">Software</Link>
+        <Link href="/experience">Work.Log</Link>
+        <Link href="/resume">Resume</Link>
+        <Link href="/contact">Contact</Link>
+      </nav>
+      <Link className={privateMode?"mode amber":"mode"} href={privateMode?"/owner":"/owner/login"}>{privateMode?"OWNER":"GUEST"}</Link>
+    </header>
+    <section className="window" aria-labelledby="window-title">
+      <div className="titlebar"><span id="window-title">{title}</span><span className="window-controls" aria-hidden="true">□ ◇ ×</span></div>
+      <div className="window-body">{children}</div>
+    </section>
+    <footer className="statusbar"><span>KB/91 SCIENTIFIC WORKSTATION</span><span>{privateMode?"PRIVATE DISK MOUNTED":"PUBLIC DISK"}</span></footer>
+  </main>
+}
