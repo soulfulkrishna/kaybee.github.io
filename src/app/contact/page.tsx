@@ -1,1 +1,19 @@
-import { Shell } from "@/components/Shell";import { profile } from "@/lib/content";export const metadata={title:"Contact"};export default function ContactPage(){return <Shell title="CONTACT.LNK"><h1>Contact / Profiles</h1><p>For research and professional contact, use one of the public profiles below.</p><div className="link-grid"><a href={profile.links.linkedin} rel="noreferrer">LinkedIn ↗</a><a href={profile.links.github} rel="noreferrer">GitHub ↗</a><a href={profile.links.scholar} rel="noreferrer">Google Scholar ↗</a><a href={profile.links.openreview} rel="noreferrer">OpenReview ↗</a></div></Shell>}
+import { Shell } from "@/components/Shell";
+import { profile } from "@/lib/content";
+
+export const metadata={title:"Contact"};
+
+export default function ContactPage(){
+  return <Shell title="CONTACT.LNK">
+    <h1>Contact / Profiles</h1>
+    <p>For research and professional contact, use one of the public profiles below.</p>
+    <div className="link-grid">
+      <a href={`mailto:${profile.email}`}>Email ↗</a>
+      <a href={profile.links.linkedin} rel="noreferrer">LinkedIn ↗</a>
+      <a href={profile.links.scholar} rel="noreferrer">Google Scholar ↗</a>
+      <a href={profile.links.github} rel="noreferrer">GitHub ↗</a>
+      <a href={profile.links.openreview} rel="noreferrer">OpenReview ↗</a>
+      <a href={profile.links.website} rel="noreferrer">Research Website ↗</a>
+    </div>
+  </Shell>
+}
