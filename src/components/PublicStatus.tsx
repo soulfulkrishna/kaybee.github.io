@@ -1,0 +1,2 @@
+import { getPublishedStatus } from "@/lib/supabase/public";
+export async function PublicStatus(){const status=await getPublishedStatus();if(!status||(!status.building&&!status.learning&&!status.exploring))return null;return <section className="panel status-panel"><h2>NOW.TXT</h2><dl className="status-grid"><div><dt>Building</dt><dd>{status.building||"—"}</dd></div><div><dt>Learning</dt><dd>{status.learning||"—"}</dd></div><div><dt>Exploring</dt><dd>{status.exploring||"—"}</dd></div></dl></section>}

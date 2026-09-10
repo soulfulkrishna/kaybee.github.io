@@ -1,9 +1,15 @@
-# KB/91 Research Workstation
+# KB/91 Research Workstation — full stack
 
-Public GitHub Pages deployment of Krishna Bhatia's portfolio, designed as an alternate-1991 scientific workstation.
+Production Next.js branch for the KB/91 portfolio. Public pages read only from safe published projections; private research data is accessible only to the verified OWNER account through Supabase Auth + RLS.
 
-The previous website is preserved on `legacy-site-backup-2026-09-10`.
+## Required Vercel environment variables
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- `NEXT_PUBLIC_SITE_URL`
+
+No Supabase service-role key is required or expected by the application.
 
 ## Security boundary
 
-GitHub Pages is static hosting. The confidential OWNER workspace from the full KB/91 application is intentionally **not** deployed here: no private project data, notes, tasks, owner credentials, or fake client-side authentication are shipped in this branch. The full-stack OWNER application requires a server-capable host and server-side authorization.
+`published_projects` and `published_status` are the only database-backed public projections. Private project descriptions, tasks, milestones, blockers, notes, ideas, activity, UUIDs, and private-storage paths are never queried by public routes.

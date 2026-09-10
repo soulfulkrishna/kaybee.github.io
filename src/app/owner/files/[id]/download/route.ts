@@ -1,0 +1,3 @@
+import { NextResponse } from "next/server";
+import { requireOwner } from "@/lib/auth";
+export async function GET(_request:Request,context:{params:Promise<{id:string}>}){const {id}=await context.params;const {supabase,user}=await requireOwner();const {data:file}=await supabase.from("project_files").select("storage_path").eq("id",id).eq("owner_id",user.id).maybeSingle();if(!file)return new NextResponse("Not found",{status:404});const {data,error}=await supabase.storage.from("private-workstation").createSignedUrl(file.storage_path,60);if(error||!data?.signedUrl)return new NextResponse("Unable to sign file",{status:500});return NextResponse.redirect(data.signedUrl,302);}

@@ -1,0 +1,11 @@
+import { z } from "zod";
+export const projectSchema = z.object({
+  name:z.string().trim().min(1).max(160), codename:z.string().trim().max(100).optional().default(""), description:z.string().trim().max(12000).optional().default(""),
+  status:z.enum(["IDEA","PLANNING","ACTIVE","PAUSED","BLOCKED","SHIPPED","ARCHIVED"]), visibility:z.enum(["PRIVATE","PUBLIC","UNLISTED","ARCHIVED"]), priority:z.enum(["LOW","MEDIUM","HIGH","CRITICAL"]), progress_mode:z.enum(["MANUAL","DERIVED"]), progress:z.coerce.number().int().min(0).max(100),
+  current_milestone:z.string().trim().max(500).optional().default(""), next_action:z.string().trim().max(2000).optional().default(""), blocker:z.string().trim().max(2000).optional().default(""), technologies:z.string().trim().max(2000).optional().default(""), tags:z.string().trim().max(2000).optional().default(""), repository_url:z.union([z.literal(""),z.string().url().max(2048)]).default(""), deployment_url:z.union([z.literal(""),z.string().url().max(2048)]).default("")
+});
+export const publicationSchema=z.object({ project_id:z.string().uuid(), slug:z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(120), title:z.string().trim().min(1).max(180), summary:z.string().trim().min(1).max(1000), body:z.string().trim().max(30000).optional().default(""), technologies:z.string().trim().max(2000).optional().default(""), source_url:z.union([z.literal(""),z.string().url().max(2048)]).default("") });
+export const statusSchema=z.object({ building:z.string().trim().max(500), learning:z.string().trim().max(500), exploring:z.string().trim().max(500) });
+export const simpleItemSchema=z.object({ project_id:z.union([z.literal(""),z.string().uuid()]).optional().default(""), title:z.string().trim().min(1).max(240), description:z.string().trim().max(5000).optional().default("") });
+export const uploadIntentSchema=z.object({ projectId:z.string().uuid(), originalName:z.string().trim().min(1).max(240), mimeType:z.enum(["image/png","image/jpeg","image/webp","application/pdf","text/plain","text/markdown","application/json"]), byteSize:z.number().int().positive().max(10*1024*1024) });
+export const csvList=(value:string)=>value.split(",").map(v=>v.trim()).filter(Boolean).slice(0,40);
