@@ -59,6 +59,13 @@ export const experience = [
     note: "Research across quantum machine learning, quantum reservoir computing, scientific machine learning, temporal learning and hybrid quantum-classical systems, including physics-informed forecasting, open-system identification, quantum control and AI-assisted quantum-system design."
   },
   {
+    role: "Founding Vice President",
+    org: "Quantum Nexus Global",
+    period: "Sep 2026 — Present",
+    location: "Global",
+    note: "Helping build the organisation’s strategy and programmes around quantum technology, with a focus on research-community development, partnerships, knowledge exchange, and connecting academia, industry and emerging policy ecosystems."
+  },
+  {
     role: "Volunteer Policy Researcher",
     org: "Quantum Ecosystems Technology Council of India (QETCI)",
     period: "Oct 2025 — Present",
